@@ -106,7 +106,7 @@ var baseUrl = "http://localhost:8080/MusicServer/api";
 											fullname : $scope.add_fullname,
 											password : $scope.add_password,
 											role : {
-												'id' : $scope.role
+												'id' : $scope.add_role
 											},
 											enabled : $scope.status,
 											phone : $scope.add_phone,

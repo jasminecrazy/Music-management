@@ -59,10 +59,4 @@ private SongDAO songDao;
 		return songDao.getGenreSong(id);
 	}
 
-	@Override
-	public List<Songs> searchSong(String keyword) {
-		
-		return songDao.searchSong(keyword);
-	}
-
 }

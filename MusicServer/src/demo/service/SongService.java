@@ -20,4 +20,6 @@ public interface SongService {
 	public List<Songs> getSingerSong(int id);
 
 	public List<Songs> getGenreSong(int id);
+
+	public List<Songs> searchSong(String keyword);
 }

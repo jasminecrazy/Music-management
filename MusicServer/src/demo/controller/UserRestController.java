@@ -20,6 +20,9 @@ public class UserRestController {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+
 	@RequestMapping(value = "user", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> getAllUser() {
 
@@ -41,6 +44,7 @@ public class UserRestController {
 	@RequestMapping(value = "user", method = RequestMethod.POST)
 	public ResponseEntity<Void> addUser(@RequestBody User user) {
 		try {
+			user.setPassword(passwordEncoder.encode(user.getPassword()));
 			userService.addUser(user);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

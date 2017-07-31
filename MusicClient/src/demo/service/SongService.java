@@ -1,11 +1,10 @@
-package demo.dao;
+package demo.service;
 
 import java.util.List;
 
 import demo.entity.Songs;
 
-
-public interface SongDAO {
+public interface SongService {
 	public List<Songs> findAllSongs();
 
 	public Songs getSongs(int id);
@@ -21,6 +20,4 @@ public interface SongDAO {
 	public List<Songs> getSingerSong(int id);
 
 	public List<Songs> getGenreSong(int id);
-
-	public List<Songs> searchSong(String keyword);
 }

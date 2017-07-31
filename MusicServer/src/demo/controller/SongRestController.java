@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import demo.entity.Songs;
+
 import demo.service.SongService;
 
 @RestController
@@ -99,6 +100,10 @@ public class SongRestController {
 	@RequestMapping(value = "song/getSinger/{id}", method = RequestMethod.GET)
 	public ResponseEntity<List<Songs>> getSingerSong(@PathVariable int id) {
 		return new ResponseEntity<List<Songs>>(songService.getSingerSong(id), HttpStatus.OK);
+	}
+	@RequestMapping(value= "song/search/{keyword}",method = RequestMethod.GET)
+	public ResponseEntity<List<Songs>> searchSong(@PathVariable String keyword) {
+		return new ResponseEntity<List<Songs>>(songService.searchSong(keyword), HttpStatus.OK);
 	}
 	
 	

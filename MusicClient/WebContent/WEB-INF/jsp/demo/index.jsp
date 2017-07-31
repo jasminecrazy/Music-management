@@ -9,24 +9,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript">
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-
-
-
-
-
-
-
-
 
 
 </script>
@@ -55,8 +39,7 @@
 	href="${pageContext.request.contextPath }/assets/css/sweetalert.css"
 	rel="stylesheet" />
 <!-- Meters graphs -->
-<script
-	src="${pageContext.request.contextPath }/assets/js/jquery-2.1.4.js"></script>
+
 <link
 	href="${pageContext.request.contextPath }/assets/css/popuo-box.css"
 	rel="stylesheet" type="text/css" media="all" />
@@ -104,28 +87,6 @@
 .menu li:hover ul {
 	display: block;
 }
-.dropdown {
-    position: relative;
-    display: inline-block;
-    margin-top:8px;
-}
-.dropdown span
-{
-color:white;
-}
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 12px 16px;
-    z-index: 1;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
 </style>
 
 </head>
@@ -157,7 +118,7 @@ color:white;
 					<li><a href="#/singer"><i class="lnr lnr-users"></i> <span>Artists</span></a></li>
 					<li><a href="#/"><i class="lnr lnr-music-note"></i> <span>Albums</span></a></li>
 					<li class="menu-list"><a href="" ng-click="openDialog()"><i
-							class="lnr lnr-heart"></i> <span>My Favourities</span></a>
+							class="lnr lnr-heart"></i> <span>My Favourite</span></a>
 						<ul class="sub-menu-list">
 							<li><a ng-click="openDialog()">All Songs</a></li>
 						</ul></li>
@@ -313,13 +274,29 @@ color:white;
 						</div>
 						<div class="col-md-3 login-pop">
 							<div id="loginpop">
-								<div class="dropdown">
-									<span>Profile</span>
-									<div class="dropdown-content">
-										<p><a href="<c:url value='/j_spring_security_logout'/>">Logout</a></p>
-									</div>
-								</div>
-
+								<a href="#" id="loginButton"><span>Login <i
+										class="arrow glyphicon glyphicon-chevron-right"></i></span></a><!-- <a
+									class="top-sign" href="#" data-toggle="modal"
+									data-target="#myModal5"><i class="fa fa-sign-in"></i></a> -->
+								<div id="loginBox">
+									<form action='<c:url value="/j_spring_security_check"></c:url>'
+										method="post" id="loginForm">
+										<fieldset id="body">
+											<fieldset>
+												<label for="username">Username</label> <input type="text"
+													name="username" id="email">
+											</fieldset>
+											<fieldset>
+												<label for="password">Password</label> <input
+													type="password" name="password" id="password">
+											</fieldset>
+											<input type="submit" id="login" value="Sign in"> <label
+												for="checkbox"><span><a href="#/register" style="font-weight: bold">Create new account</a></span>
+											</label>
+										</fieldset>
+										<span><a href="#">Forgot your password?</a></span>
+									</form>
+								</div>                                                                                                                                                                                                                                                                                                                                                                                 
 							</div>
 
 						</div>
@@ -339,7 +316,8 @@ color:white;
 		</div>
 
 	</section>
-
+	<script
+		src="${pageContext.request.contextPath }/assets/js/jquery-2.1.4.js"></script>
 	<!-- Bootstrap -->
 	<script
 		src="${pageContext.request.contextPath }/assets/js/bootstrap.min.js"></script>

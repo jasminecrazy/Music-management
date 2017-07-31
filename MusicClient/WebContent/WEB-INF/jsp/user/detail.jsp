@@ -10,16 +10,14 @@
 				<div class="clearfix"></div>
 			</div>
 			
-			<div class="col-md-3 content-grid" >
-				<a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img
+			<div class="col-md-3 content-grid" ng-repeat="data in list_detail track by $index">
+				<a class="play-icon popup-with-zoom-anim" href="#/detailSong/{{list_detail.indexOf(data)}}"><img
 					src="${pageContext.request.contextPath }/assets/images/img.jpg"
-					title="allbum-name"></a> <a
-					class="button play-icon popup-with-zoom-anim" href="#/detail/{{x.id}}"
+					title="allbum-name">{{data.songName}}</a> <a
+					class="button play-icon popup-with-zoom-anim" href="#/detailSong/{{list_detail.indexOf(data)}}"
 					></a>
 			</div>
-			<div ng-repeat="data in list_detail">
-			<p>{{data.id}}</p>
-			</div>
+			
 			
 			<div id="small-dialog" class="mfp-hide">
 				<iframe src="https://player.vimeo.com/video/12985622"></iframe>
@@ -43,11 +41,11 @@
 
 						<div class="jp-playlist">
 						<h3>Maybe you like</h3>
-							<ul style="display: block;" data-ng-repeat="x in list_song">
+							<ul style="display: block;" data-ng-repeat="x in list_song|limitTo:limit">
 								<li class="">
 									<div>
 										<a href="javascript:;" class="jp-playlist-item-remove"
-											style="display: none;"></a> <a href="javascript:;"
+											style="display: none;"></a> <a href="#/detailSong/{{list_song.indexOf(x)}}"
 											class="jp-playlist-item jp-playlist-current" tabindex="0">
 											{{x.songName}} <span class="jp-artist">by
 												{{x.author.authorname}}</span>

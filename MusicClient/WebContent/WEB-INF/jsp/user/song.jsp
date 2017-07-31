@@ -16,7 +16,7 @@
 					title="allbum-name"/>
 				</a>
 				 <a
-					class="button play-icon popup-with-zoom-anim" href="#small-dialog"
+					class="button play-icon popup-with-zoom-anim" href="#/detailSong/{{list_song.indexOf(x)}}"
 					data-ng-bind="x.songName">
 				</a>
 				<span>{{x.singer.singerName}}</span>

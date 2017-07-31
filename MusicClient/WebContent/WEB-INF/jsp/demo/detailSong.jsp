@@ -1,131 +1,33 @@
 
 
 <div class="inner-content">
-
 	<div class="music-left">
-		<!--banner-section-->
-		<div class="banner-section">
-			<div class="banner">
-				<div class="callbacks_container">
-					<ul class="rslides callbacks callbacks1" id="slider4">
-						<li>
-							<div class="banner-img">
-								<img
-									src="${pageContext.request.contextPath }/assets/images/11.jpg"
-									class="img-responsive" alt="">
-							</div>
-							<div class="banner-info">
-								<a class="trend" href="single.html">TRENDING</a>
-
-							</div>
-
-						</li>
-						<li>
-							<div class="banner-img">
-								<img
-									src="${pageContext.request.contextPath }/assets/images/22.jpg"
-									class="img-responsive" alt="">
-							</div>
-							<div class="banner-info">
-								<a class="trend" href="single.html">TRENDING</a>
-
-							</div>
-
-
-						</li>
-						<li>
-							<div class="banner-img">
-								<img
-									src="${pageContext.request.contextPath }/assets/images/33.jpg"
-									class="img-responsive" alt="">
-							</div>
-							<div class="banner-info">
-								<a class="trend" href="single.html">TRENDING</a>
-								<h3>Let Your Home</h3>
-								<p>
-									Album by <span>Rock star</span>
-								</p>
-							</div> <!-- /w3layouts-agileits -->
-						</li>
-					</ul>
-				</div>
-				<!--banner-->
-				<script
-					src="${pageContext.request.contextPath }/assets/js/responsiveslides.min.js"></script>
-				<script>
-					// You can also use "$(window).load(function() {"
-					$(function() {
-						// Slideshow 4
-						$("#slider4")
-								.responsiveSlides(
-										{
-											auto : true,
-											pager : true,
-											nav : true,
-											speed : 500,
-											namespace : "callbacks",
-											before : function() {
-												$('.events')
-														.append(
-																"<li>before event fired.</li>");
-											},
-											after : function() {
-												$('.events')
-														.append(
-																"<li>after event fired.</li>");
-											}
-										});
-
-					});
-				</script>
-				<div class="clearfix"></div>
-			</div>
-		</div>
-		<!--//End-banner-->
-		<!--albums-->
-		<!-- pop-up-box -->
-
-		<script
-			src="${pageContext.request.contextPath }/assets/js/jquery.magnific-popup.js"
-			type="text/javascript"></script>
-		<script>
-			$(document).ready(function() {
-				$('.popup-with-zoom-anim').magnificPopup({
-					type : 'inline',
-					fixedContentPos : false,
-					fixedBgPos : true,
-					overflowY : 'auto',
-					closeBtnInside : true,
-					preloader : false,
-					midClick : true,
-					removalDelay : 300,
-					mainClass : 'my-mfp-zoom-in'
-				});
-			});
-		</script>
 		<!--//pop-up-box -->
-		<div class="albums">
+		<div class="">
 			<div class="tittle-head">
-				<h3 class="tittle">
-					New Releases <span class="new">New</span>
-				</h3>
-				<a href="#/song"><h4 class="tittle">See all</h4></a>
+				<h3 class="tittle"></h3>
+
 				<div class="clearfix"></div>
 			</div>
-			<div class="col-md-3 content-grid" data-ng-repeat="x in list_song">
-				<a class="play-icon popup-with-zoom-anim"
-					href="#/detailSong/{{list_song.indexOf(x)}}"><img
-					src="${pageContext.request.contextPath }/assets/images/11.jpg"
-					title="allbum-name">{{x.songName}}</a>
+			<div class="text-center" ng-model="detailSong" >
+				<%-- <a class="play-icon popup-with-zoom-anim" href="#small-dialog">
+					<img
+					src="${pageContext.request.contextPath }/assets/images/img.jpg"
+					title="allbum-name"/>
+				</a> --%>
+				 <h1>{{detailSong[whichSong].songName}}</h1>
+				 <p class="text-right">Singer: {{detailSong[whichSong].singer.singerName}}</p>
+				<p>{{detailSong[whichSong].lyric}}</p>
+				<span></span>
+			</div>
+			<div id="small-dialog" class="mfp-hide">
+				<iframe src="https://player.vimeo.com/video/12985622"></iframe>
+
 			</div>
 
 			<div class="clearfix"></div>
 		</div>
 		<!--//End-albums-->
-		<!--//discover-view-->
-
-
-		<!--//discover-view-->
 	</div>
 	<!--//music-left-->
 	<!--/music-right-->
@@ -139,21 +41,15 @@
 
 
 						<div class="jp-playlist">
-							<h3>Maybe you like</h3>
-							<ul style="display: block;"
-								data-ng-repeat="x in list_song|limitTo:limit">
+						<h3>Maybe you like</h3>
+							<ul style="display: block;" data-ng-repeat="x in list_song|limitTo:limit">
 								<li class="">
 									<div>
 										<a href="javascript:;" class="jp-playlist-item-remove"
-											style="display: none;"></a> <a
-											href="#/detailSong/{{list_song.indexOf(x)}}"
+											style="display: none;"></a> <a href="#/detailSong/{{list_song.indexOf(x)}}"
 											class="jp-playlist-item jp-playlist-current" tabindex="0">
 											{{x.songName}} <span class="jp-artist">by
 												{{x.author.authorname}}</span>
-											GG<button type="submit" class="box-btn">
-												<span class="glyphicon glyphicon-heart-empty"
-													aria-hidden="true"></span>
-											</button>
 										</a>
 									</div>
 								</li>

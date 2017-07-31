@@ -86,10 +86,10 @@
 										Management<span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a
-											href="${pageContext.request.contextPath }/admin/equipment.html">Song
+											href="${pageContext.request.contextPath }/admin/song.html">Song
 												management</a></li>
 										<li><a
-											href="${pageContext.request.contextPath }/admin/user.html">User
+											href="${pageContext.request.contextPath }/admin.html">User
 												management</a></li>
 
 
@@ -327,9 +327,9 @@
 
 												<div class="form-group">
 													<label class="control-label">Role</label> <input
-														type="radio" ng-model="role" ng-value="1"
+														type="radio" ng-model="add_role" ng-value="1"
 														ng-checked="true" /> Admin <input type="radio"
-														ng-model="role" ng-value="2" /> User
+														ng-model="add_role" ng-value="2" /> User
 
 
 												</div>

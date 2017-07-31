@@ -13,8 +13,8 @@
 				<a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img
 					src="${pageContext.request.contextPath }/assets/images/img.jpg"
 					title="allbum-name"></a> <a
-					class="button play-icon popup-with-zoom-anim" href="#small-dialog"
-					data-ng-bind="x.singerName"></a>
+					class="button play-icon popup-with-zoom-anim" href="#/detailSinger/{{x.id}}"
+					data-ng-bind="x.singerName"ng-click="detailSinger(x)"></a>
 			</div>
 			<div id="small-dialog" class="mfp-hide">
 				<iframe src="https://player.vimeo.com/video/12985622"></iframe>
@@ -38,7 +38,7 @@
 
 						<div class="jp-playlist">
 						<h3>Maybe you like</h3>
-							<ul style="display: block;" data-ng-repeat="x in list_song">
+							<ul style="display: block;" data-ng-repeat="x in list_song | limitTo:limit">
 								<li class="">
 									<div>
 										<a href="javascript:;" class="jp-playlist-item-remove"

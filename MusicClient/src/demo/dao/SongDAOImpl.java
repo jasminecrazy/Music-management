@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import demo.entity.Songs;
 
-
 @Repository("SongDAO")
 public class SongDAOImpl implements SongDAO {
 	@Autowired
@@ -173,28 +172,6 @@ public class SongDAOImpl implements SongDAO {
 			if (transaction != null) {
 				transaction.rollback();
 			}
-		} finally {
-			session.close();
-		}
-		return song;
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Songs> searchSong(String keyword) {
-		List<Songs> song = new ArrayList<Songs>();
-		Session session = sessionFactory.openSession();
-		Transaction transaction = null;
-		try {
-			transaction = session.beginTransaction();
-			song = session.createQuery("select c from Songs c where c.songName like :keyword").setString("keyword","%"+keyword+"%").list();
-			transaction.commit();
-		} catch (Exception e) {
-			song = null;
-			if (transaction != null) {
-				transaction.rollback();
-			}
-			System.out.println(e.getMessage());
 		} finally {
 			session.close();
 		}
