@@ -22,4 +22,6 @@ public interface SongService {
 	public List<Songs> getGenreSong(int id);
 
 	public List<Songs> searchSong(String keyword);
+
+	public List<Songs> favoriteSong();
 }

@@ -373,4 +373,7 @@ app
 					$scope.showList = function(school, index) {
 						return ((index >= $scope.firstIndex) && (index < $scope.lastIndex));
 					}
+					
+					
+					
 				});

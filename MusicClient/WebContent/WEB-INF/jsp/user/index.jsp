@@ -156,10 +156,10 @@ color:white;
 
 					<li><a href="#/singer"><i class="lnr lnr-users"></i> <span>Artists</span></a></li>
 					<li><a href="#/"><i class="lnr lnr-music-note"></i> <span>Albums</span></a></li>
-					<li class="menu-list"><a href="" ng-click="openDialog()"><i
-							class="lnr lnr-heart"></i> <span>My Favourities</span></a>
+					<li class="menu-list"><a href="#/favorite" ><i
+							class="lnr lnr-heart"></i> <span>My Favourite</span></a>
 						<ul class="sub-menu-list">
-							<li><a ng-click="openDialog()">All Songs</a></li>
+							<li><a href="#/favorite">All Songs</a></li>
 						</ul></li>
 
 				</ul>

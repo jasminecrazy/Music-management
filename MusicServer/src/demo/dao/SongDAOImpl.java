@@ -201,4 +201,26 @@ public class SongDAOImpl implements SongDAO {
 		return song;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Songs> favoriteSong() {
+		List<Songs> songs = new ArrayList<Songs>();
+		Session session = sessionFactory.openSession();
+		Transaction transaction = null;
+		try {
+			transaction = session.beginTransaction();
+			songs = session.createQuery("select f from Songs f where f.status=1").list();
+			transaction.commit();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			songs = null;
+			if (transaction != null) {
+				transaction.rollback();
+			}
+		} finally {
+			session.close();
+		}
+		return songs;
+	}
+
 }

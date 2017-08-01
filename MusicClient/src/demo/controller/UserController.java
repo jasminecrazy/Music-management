@@ -58,4 +58,8 @@ public class UserController {
 	public String search() {
 		return "user/search";
 	}
+	@RequestMapping(value = "favorite", method = RequestMethod.GET)
+	public String favorite() {
+		return "user/favorite";
+	}
 }

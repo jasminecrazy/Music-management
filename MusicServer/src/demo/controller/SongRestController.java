@@ -105,6 +105,10 @@ public class SongRestController {
 	public ResponseEntity<List<Songs>> searchSong(@PathVariable String keyword) {
 		return new ResponseEntity<List<Songs>>(songService.searchSong(keyword), HttpStatus.OK);
 	}
+	@RequestMapping(value= "song/favorite",method = RequestMethod.GET)
+	public ResponseEntity<List<Songs>> favoriteSong() {
+		return new ResponseEntity<List<Songs>>(songService.favoriteSong(), HttpStatus.OK);
+	}
 	
 	
 }

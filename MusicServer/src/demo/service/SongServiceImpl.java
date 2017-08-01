@@ -65,4 +65,10 @@ private SongDAO songDao;
 		return songDao.searchSong(keyword);
 	}
 
+	@Override
+	public List<Songs> favoriteSong() {
+		
+		return songDao.favoriteSong();
+	}
+
 }

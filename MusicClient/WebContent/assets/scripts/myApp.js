@@ -41,6 +41,11 @@ app.config(function($routeProvider, $locationProvider) {
 		templateUrl : "demo/register.html",
 		controller : "indexCtrl"
 
+	}).
+	when("/favorite", {
+		templateUrl : "user/favorite.html",
+		controller : "indexCtrl"
+
 	})
 
 });
