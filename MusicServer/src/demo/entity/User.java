@@ -1,5 +1,5 @@
 package demo.entity;
-// Generated Jul 29, 2017 10:42:16 AM by Hibernate Tools 5.1.0.Alpha1
+// Generated Aug 8, 2017 11:27:46 AM by Hibernate Tools 5.2.3.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

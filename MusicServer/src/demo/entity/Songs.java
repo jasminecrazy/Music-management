@@ -1,5 +1,5 @@
 package demo.entity;
-// Generated Jul 29, 2017 10:42:16 AM by Hibernate Tools 5.1.0.Alpha1
+// Generated Aug 8, 2017 11:27:46 AM by Hibernate Tools 5.2.3.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,6 +27,7 @@ public class Songs implements java.io.Serializable {
 	private String songName;
 	private Boolean status;
 	private String lyric;
+	private String picture;
 
 	public Songs() {
 	}
@@ -41,7 +42,7 @@ public class Songs implements java.io.Serializable {
 	}
 
 	public Songs(Album album, Author author, Genre genre, Singer singer, String songId, String songName, Boolean status,
-			String lyric) {
+			String lyric, String picture) {
 		this.album = album;
 		this.author = author;
 		this.genre = genre;
@@ -50,6 +51,7 @@ public class Songs implements java.io.Serializable {
 		this.songName = songName;
 		this.status = status;
 		this.lyric = lyric;
+		this.picture = picture;
 	}
 
 	@Id
@@ -138,6 +140,15 @@ public class Songs implements java.io.Serializable {
 
 	public void setLyric(String lyric) {
 		this.lyric = lyric;
+	}
+
+	@Column(name = "picture", length = 500)
+	public String getPicture() {
+		return this.picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 
 }

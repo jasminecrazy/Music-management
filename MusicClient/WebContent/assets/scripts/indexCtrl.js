@@ -217,6 +217,11 @@ app
 											}
 
 										});
+						$http.get(baseUrl + "singer/"+data.id).then(function(response){
+							$scope.singerName = response.data.singerName;
+							$scope.picture=response.data.picture;
+							
+						});
 					}
 					//Get list song after genre
 					$scope.detailGenre = function(data) {
@@ -246,13 +251,18 @@ app
 					//Open dialog request Login
 					$scope.openDialog = function()
 					{
-						alertLogin();
+						
+						 document.getElementById("heart").style.color="red";
+						 alertLogin();
 					}
+					$('#favourite_user').on("click", function() {	
+					    $(this).toggleClass('favourited unfavourited');
+					});
 					function alertLogin() {
 						swal({
 							title : "",
-							text : "Please login to add music to playlist",
-							type : "info",
+							text : "Added to your playlist",
+							type : "success",
 							timer : alertDuration,
 							showCancelButton: true,
 							showConfirmButton : false

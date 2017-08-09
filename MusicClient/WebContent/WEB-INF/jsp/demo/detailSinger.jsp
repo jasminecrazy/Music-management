@@ -9,17 +9,14 @@
 
 				<div class="clearfix"></div>
 			</div>
-			<div class="col-md-3 content-grid" ng-repeat="x in list_detailSinger" >
-				 <a class="play-icon popup-with-zoom-anim" href="#/detailSong/{{list_detailSinger.indexOf(x)}}">
-					<img
+			<div class="col-md-3 content-grid" ng-repeat="x in list_detailSinger">
+				<a class="play-icon popup-with-zoom-anim"
+					href="#/detailSong/{{list_detailSinger.indexOf(x)}}"> <img
 					src="${pageContext.request.contextPath }/assets/images/img.jpg"
-					title="allbum-name"/>{{x.songName}}
-				</a>
-				
-				
-				<span></span>
+					title="allbum-name" />{{x.songName}}
+				</a> <span></span>
 			</div>
-			
+
 			<div id="small-dialog" class="mfp-hide">
 				<iframe src="https://player.vimeo.com/video/12985622"></iframe>
 
@@ -40,21 +37,13 @@
 					<div class="jp-type-playlist">
 
 
-						<div class="jp-playlist">
-						<h3>Maybe you like</h3>
-							<ul style="display: block;" data-ng-repeat="x in list_song|limitTo:limit">
-								<li class="">
-									<div>
-										<a href="javascript:;" class="jp-playlist-item-remove"
-											style="display: none;"></a> <a href="#/detailSong/{{list_song.indexOf(x)}}"
-											class="jp-playlist-item jp-playlist-current" tabindex="0">
-											{{x.songName}} <span class="jp-artist">by
-												{{x.author.authorname}}</span>
-										</a>
-									</div>
-								</li>
-
-							</ul>
+						<div class="col-md-3 content-grid"
+							>
+							<a class="play-icon popup-with-zoom-anim" href="#small-dialog">
+							<img
+								src="${pageContext.request.contextPath }/assets/images/{{picture}}"
+								title="allbum-name" width="350" height="200"></a> 
+								<p ng-model="singerName"></p>
 						</div>
 
 					</div>

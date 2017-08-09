@@ -9,15 +9,28 @@
 
 				<div class="clearfix"></div>
 			</div>
-			<div class="text-center" ng-model="detailSong" >
+			<div class="text-center" ng-model="detailSong">
 				<%-- <a class="play-icon popup-with-zoom-anim" href="#small-dialog">
 					<img
 					src="${pageContext.request.contextPath }/assets/images/img.jpg"
 					title="allbum-name"/>
 				</a> --%>
-				 <h1>{{detailSong[whichSong].songName}}</h1>
-				 <p class="text-right">Singer: {{detailSong[whichSong].singer.singerName}}</p>
-				<p>{{detailSong[whichSong].lyric}}</p>
+				<div class="row ">
+				<h1>{{detailSong[whichSong].songName}}</h1>
+				<span class="fa fa-heart-o" id="heart" ng-click="openDialog()"></span>
+				</div>
+				<p class="text-right">Singer:
+					{{detailSong[whichSong].singer.singerName}}</p>
+					
+					
+				<audio controls class="">
+					<source src="http://www.w3schools.com/html/horse.mp3"
+						type="audio/mpeg">
+					Trình duyệt của bạn không hỗ trợ HTML5
+				</audio>
+				
+				
+				<p style="width: 500px; margin: 0 auto; text-align: justify">{{detailSong[whichSong].lyric}}</p>
 				<span></span>
 			</div>
 			<div id="small-dialog" class="mfp-hide">
@@ -41,12 +54,14 @@
 
 
 						<div class="jp-playlist">
-						<h3>Maybe you like</h3>
-							<ul style="display: block;" data-ng-repeat="x in list_song|limitTo:limit">
+							<h3>Maybe you like</h3>
+							<ul style="display: block;"
+								data-ng-repeat="x in list_song|limitTo:limit">
 								<li class="">
 									<div>
 										<a href="javascript:;" class="jp-playlist-item-remove"
-											style="display: none;"></a> <a href="#/detailSong/{{list_song.indexOf(x)}}"
+											style="display: none;"></a> <a
+											href="#/detailSong/{{list_song.indexOf(x)}}"
 											class="jp-playlist-item jp-playlist-current" tabindex="0">
 											{{x.songName}} <span class="jp-artist">by
 												{{x.author.authorname}}</span>

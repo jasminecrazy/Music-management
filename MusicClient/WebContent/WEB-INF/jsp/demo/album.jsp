@@ -114,7 +114,7 @@
 							</div>
 							<div class="col-md-3 content-grid" data-ng-repeat="x in list_song|limitTo:8">
 								<a class="play-icon popup-with-zoom-anim" href="#/detailSong/{{list_song.indexOf(x)}}"><img
-									src="${pageContext.request.contextPath }/assets/images/11.jpg" title="allbum-name">{{x.songName}}</a>
+									src="${pageContext.request.contextPath }/assets/images/{{x.picture}}" width="300" height="200" title="allbum-name">{{x.songName}}</a>
 							</div>
 							
 							<div class="clearfix"></div>

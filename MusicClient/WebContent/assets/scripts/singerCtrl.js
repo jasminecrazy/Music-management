@@ -1,15 +1,16 @@
 app
 		.controller(
 				'singerCtrl',
-				function($scope,$rootScope, $http, $filter, $resource, uiGridConstants) {
+				function($scope, $rootScope, $http, $filter, $resource,
+						uiGridConstants) {
 					$scope.list_Song = [];
 					$rootScope.listName = [];
 					var baseUrl = "http://localhost:8080/MusicServer/api/";
-					      
+
 					// get singer List
 					function GetListSinger() {
 						$scope.list = [];
-						var Singer = $resource(baseUrl+'singer');
+						var Singer = $resource(baseUrl + 'singer');
 						Singer.query().$promise.then(function(listSinger) {
 
 							$scope.list = listSinger;
@@ -45,6 +46,10 @@ app
 									displayName : 'Singer Name'
 								},
 								{
+									name : 'description',
+									displayName : 'Description'
+								},
+								{
 									name : 'Action',
 									enableSorting : false,
 									enableFiltering : false,
@@ -54,77 +59,65 @@ app
 					};
 
 					var alertDuration = 1800;
-					// Check singerId
-					function id_duplicate_Add(id) {
-						var flag = true;
-						$scope.list
-								.forEach(function(item, index) {
-									if (item.singerId === id) {
-										$scope.duplicateAlert = "There already exists a song with this ID";
 
-										flag = false;
-									}
-								});
-						return flag;
-					}
-					// Hide alert when using same SongID
-					$scope.hideDuplicateAlert = function() {
-						$scope.duplicateAlert = " ";
-					}
+					
 
 					// Add new singer
 					$scope.add = function() {
-						if (id_duplicate_Add(document.getElementById("singerId").value)) {
 
-							$http(
-									{
-										method : "POST",
-										url : baseUrl+"singer",
-										data : {
-											
-											singerName : $scope.add_singerName
+						$http(
+								{
+									method : "POST",
+									url : baseUrl + "singer",
+									data : {
+
+										singerName : $scope.add_singerName,
+										description : $scope.add_description
+
+									},
+
+									dataType : "json",
+									headers : {
+										'Content-Type' : 'application/json; charset=UTF-8'
+									}
+								})
+								.then(
+										function(result) {
+											if (result.status == 201) {
+
+												$("#myModal_Add").modal("hide");
+												GetListSinger();
+												alertAddSucess();
+
+											}
 
 										},
-
-										dataType : "json",
-										headers : {
-											'Content-Type' : 'application/json; charset=UTF-8'
-										}
-									})
-									.then(
-											function(result) {
-												if (result.status == 201) {
-
-													$("#myModal_Add").modal(
-															"hide");
-													GetListSinger();
-													alertAddSucess();
-
-												}
-
-											},
-											function(response) {
-												alertFailMessage("Oops! Something went wrong, please check your input again.");
-												console.log('Fail');
-											});
-						}
-
+										function(response) {
+											alertFailMessage("Oops! Something went wrong, please check your input again.");
+											console.log('Fail');
+										});
 					}
+
 					// Load song data to edit form
 
 					$scope.GetSinger = function(data) {
-						$http.get(
-								baseUrl+"singer/"
-										+ data.id).then(function(response) {
-							singerID = data.id
-							$scope.edit_singerId = response.data.singerId;
-							$scope.edit_singerName = response.data.singerName;
+						$http
+								.get(baseUrl + "singer/" + data.id)
+								.then(
+										function(response) {
+											singerID = data.id
+											$scope.edit_singerId = response.data.singerId;
+											$scope.edit_singerName = response.data.singerName;
+											$scope.edit_description = response.data.description;
+											$scope.edit_id = data.id;
+											$scope.editForm.singerId
+													.$setUntouched();
+											$scope.editForm.singerName
+													.$setUntouched();
+											$scope.editForm.description
+													.$setUntouched();
 
-							$scope.edit_id = data.id;
-							$scope.editForm.singerId.$setUntouched();
-							$scope.editForm.singerName.$setUntouched();
-
-						});
+										});
 
 					}
 					// Update song information
@@ -133,13 +126,14 @@ app
 						var singerData = {
 							id : singerID,
 							singerId : $scope.edit_singerId,
-							singerName : $scope.edit_singerName
+							singerName : $scope.edit_singerName,
+							description : $scope.edit_description
 						};
 
 						$http(
 								{
 									method : "PUT",
-									url : baseUrl+"singer",
+									url : baseUrl + "singer",
 									data : singerData,
 									dataType : "json",
 									headers : {
@@ -165,12 +159,10 @@ app
 					}
 					// Delete Song
 					$scope.deleteSingers = function() {
-						$http(
-								{
-									method : "DELETE",
-									url : baseUrl+"singer/"
-											+ datadelete.id
-								}).then(function(result) {
+						$http({
+							method : "DELETE",
+							url : baseUrl + "singer/" + datadelete.id
+						}).then(function(result) {
 							if (result.status == 202) {
 								$('#myModal_delete').modal('hide');
 								GetListSinger();
@@ -229,7 +221,6 @@ app
 						$scope.add_singerName = "";
 						$scope.frmFormAdd.singerId.$setUntouched();
 						$scope.frmFormAdd.singerName.$setUntouched();
-						
 
 					}
 					function getRandomInt(min, max) {

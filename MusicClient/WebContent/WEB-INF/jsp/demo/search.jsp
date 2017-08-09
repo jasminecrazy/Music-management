@@ -11,7 +11,7 @@
 			</div>
 			 <div class="col-md-3 content-grid" data-ng-repeat="x in list_searchSong">
 				<a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img
-					src="${pageContext.request.contextPath }/assets/images/img.jpg"
+					src="${pageContext.request.contextPath }/assets/images/{{x.picture}}"
 					title="allbum-name"></a> <a
 					class="button play-icon popup-with-zoom-anim" href="#/detailSong/{{list_searchSong.indexOf(x)}}"
 					data-ng-bind="x.songName"></a>

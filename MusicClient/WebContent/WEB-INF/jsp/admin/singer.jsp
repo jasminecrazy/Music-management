@@ -244,6 +244,20 @@
 														</div>
 													</div>
 												</div>
+												<div class="form-group">
+													<label class=" control-label" for="">Description</label>
+													<div class="">
+														<textarea id="description" name="description"
+															class="form-control input-md" rows="4"
+															ng-model="add_description" ng-required="true" ></textarea>
+														<div ng-messages="frmFormAdd.description.$error">
+															<div ng-message="required"
+																ng-show="frmFormAdd.description.$touched">
+																<p style="color: red">This field is required</p>
+															</div>
+														</div>
+													</div>
+												</div>
 
 
 											</div>
@@ -256,7 +270,7 @@
 									</div>
 									<div class="modal-footer">
 										<button id="btnSave" name="btnSave" class="btn btn-primary"
-											ng-disabled="frmFormAdd.singerId.$error.required ||frmFormAdd.singerName.$error.required"
+											ng-disabled="frmFormAdd.description.$error.required ||frmFormAdd.singerName.$error.required"
 											ng-click="add()">Add</button>
 
 										<button type="button" class="btn btn-default"
@@ -311,6 +325,20 @@
 														<div ng-messages="editForm.singerName.$error">
 															<div ng-message="required"
 																ng-show="editForm.singerName.$touched">
+																<p style="color: red">This field is required</p>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class=" control-label" for="">Description</label>
+													<div class="">
+														<textarea id="description" name="description"
+															class="form-control input-md" rows="4"
+															ng-model="edit_description" ng-required="true" ></textarea>
+														<div ng-messages="editForm.description.$error">
+															<div ng-message="required"
+																ng-show="editForm.description.$touched">
 																<p style="color: red">This field is required</p>
 															</div>
 														</div>
